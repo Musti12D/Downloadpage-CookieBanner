@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIRA Agent Download</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #000000;
+      color: #f5f5f7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #ffffff, #999999);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 800;
+      color: #000000;
+      margin: 0 auto 40px;
+    }
+    
+    h1 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    
+    .subtitle {
+      font-size: 20px;
+      color: #86868b;
+      margin-bottom: 60px;
+      line-height: 1.5;
+    }
+    
+    .download-section {
+      margin-bottom: 80px;
+    }
+    
+    .download-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #000000;
+      padding: 24px 60px;
+      border-radius: 16px;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 0 12px 20px;
+      letter-spacing: 0.3px;
+    }
+    
+    .download-btn:hover {
+      background: #e5e5e5;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
+    }
+    
+    .download-btn:active {
+      transform: translateY(-2px);
+    }
+    
+    .platform-note {
+      font-size: 14px;
+      color: #48484a;
+      margin-top: 12px;
+    }
+    
+    .info-section {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 48px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+    
+    .info-section h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    
+    .info-section ol {
+      list-style: none;
+      counter-reset: step;
+    }
+    
+    .info-section li {
+      counter-increment: step;
+      margin-bottom: 20px;
+      padding-left: 40px;
+      position: relative;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #d1d1d6;
+    }
+    
+    .info-section li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    
+    .permissions-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+    
+    .permissions-list li {
+      padding-left: 24px;
+      margin-bottom: 12px;
+      position: relative;
+      counter-increment: none;
+    }
+    
+    .permissions-list li::before {
+      content: '•';
+      position: absolute;
+      left: 8px;
+      font-size: 20px;
+      width: auto;
+      height: auto;
+      background: none;
+    }
+    
+    .support-box {
+      background: rgba(48, 209, 88, 0.1);
+      border: 1px solid rgba(48, 209, 88, 0.2);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 40px;
+    }
+    
+    .support-box h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #30d158;
+    }
+    
+    .support-box p {
+      color: #d1d1d6;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    
+    .phone-link {
+      display: inline-block;
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: 'SF Mono', monospace;
+      letter-spacing: 1px;
+    }
+    
+    .footer {
+      margin-top: 60px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-link {
+      color: #86868b;
+      text-decoration: none;
+      font-size: 14px;
+      margin: 0 16px;
+      transition: color 0.3s;
+    }
+    
+    .footer-link:hover {
+      color: #ffffff;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 40px;
+      }
+      
+      .subtitle {
+        font-size: 18px;
+      }
+      
+      .download-btn {
+        display: block;
+        margin: 0 0 16px 0;
+        padding: 20px 40px;
+        font-size: 18px;
+      }
+      
+      .info-section {
+        padding: 32px 24px;
+      }
+      
+      .phone-link {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">M</div>
+  
+  <h1>MIRA Agent</h1>
+  <p class="subtitle">Dein autonomer Computer-Assistent</p>
+  
+  <div class="download-section">
+    <a href="#" class="download-btn" id="download-btn">
+      Jetzt herunterladen
+    </a>
+    <p class="platform-note" id="platform-note">Lädt automatisch die richtige Version</p>
+  </div>
+  
+  <div class="info-section">
+    <h2>Installation & Einrichtung</h2>
+    <ol>
+      <li>Lade die App für dein Betriebssystem herunter</li>
+      <li>Öffne die heruntergeladene Datei und folge den Installationsanweisungen</li>
+      <li>Gib deinen Aktivierungs-Code ein, den du per E-Mail erhalten hast</li>
+      <li>Die App verbindet sich automatisch mit deinem Control Center</li>
+      <li>Öffne <strong>getmira.space/mitarbeiter</strong> um Befehle zu geben</li>
+    </ol>
+  </div>
+  
+  <div class="info-section">
+    <h2>Erforderliche Berechtigungen</h2>
+    <p style="color: #d1d1d6; margin-bottom: 20px;">Der Agent benötigt folgende Systemrechte:</p>
+    <ul class="permissions-list">
+      <li><strong>Bildschirmaufnahme</strong> – Um deinen Bildschirm zu analysieren</li>
+      <li><strong>Bedienungshilfen</strong> – Um Maus und Tastatur zu steuern</li>
+      <li><strong>Netzwerk</strong> – Um mit dem Cloud-Service zu kommunizieren</li>
+    </ul>
+    <p style="color: #86868b; margin-top: 20px; font-size: 14px;">
+      Alle Berechtigungen werden nur lokal auf deinem Gerät verwendet. 
+      Deine Daten werden verschlüsselt übertragen und nicht gespeichert.
+    </p>
+  </div>
+  
+  <div class="support-box">
+    <h3>Fragen oder Probleme?</h3>
+    <p>Unser Support-Team hilft dir gerne weiter:</p>
+    <a href="tel:+4917672695482" class="phone-link">0176 / 726 954 82</a>
+  </div>
+  
+  <div class="footer">
+    <a href="https://getmira.space" class="footer-link">Zurück zur Hauptseite</a>
+    <a href="https://getmira.space/privacy" class="footer-link">Datenschutz</a>
+    <a href="https://getmira.space/terms" class="footer-link">AGB</a>
+  </div>
+</div>
+
+<script>
+// Platform detection
+const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+const isWindows = navigator.platform.toUpperCase().indexOf('WIN') >= 0;
+
+// Set download URLs (replace with actual GitHub release URLs)
+const MAC_DOWNLOAD_URL = 'https://github.com/YOUR_USERNAME/mira-agent/releases/latest/download/MIRA-Agent-mac.dmg';
+const WINDOWS_DOWNLOAD_URL = 'https://github.com/YOUR_USERNAME/mira-agent/releases/latest/download/MIRA-Agent-windows.exe';
+
+const downloadBtn = document.getElementById('download-btn');
+const platformNote = document.getElementById('platform-note');
+
+// Set correct download URL and text based on platform
+if (isMac) {
+  downloadBtn.href = MAC_DOWNLOAD_URL;
+  platformNote.textContent = 'macOS Version';
+} else if (isWindows) {
+  downloadBtn.href = WINDOWS_DOWNLOAD_URL;
+  platformNote.textContent = 'Windows Version';
+} else {
+  // Default to Windows for Linux/other
+  downloadBtn.href = WINDOWS_DOWNLOAD_URL;
+  platformNote.textContent = 'Windows Version';
+}
+
+// Track download
+downloadBtn.addEventListener('click', (e) => {
+  const platform = isMac ? 'mac' : 'windows';
+  console.log(`Download started: ${platform}`);
+  // Add analytics here if needed
+});
+</script>
+
+</body>
+</html>
